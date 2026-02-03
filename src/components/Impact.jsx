@@ -1,121 +1,121 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Users, TrendingUp, Handshake, Bookmark, Sparkles, Goal } from 'lucide-react';
-import communityImg from '../assets/images/community.png';
+import { TrendingUp, Heart, GraduationCap, Activity } from 'lucide-react';
 
 const Impact = () => {
-    const points = [
+    const highlights = [
         {
             title: 'Youth Empowerment',
-            description: 'Directly investing in the potential of Nigerian youth through specialized tech-driven training and modern internships.',
-            icon: Sparkles
+            desc: 'Investing in the potential of Nigerian youth through specialized training programs, internships, and high-tech job creation.',
+            icon: GraduationCap,
+            stat: '200+',
+            suffix: 'EMPLOYED'
         },
         {
             title: 'Poverty Reduction',
-            description: 'Creating high-yield employment and stable income corridors to uplift living standards across host communities.',
-            icon: Goal
+            desc: "Providing stable employment and income opportunities to improve living standards in our host communities.",
+            icon: Heart,
+            stat: '27Y',
+            suffix: 'COMMITMENT'
         },
         {
-            title: 'Economic Stimulation',
-            description: 'Catalyzing local marketplace activity by bridging the gap between subsistence and commercial agriculture.',
-            icon: TrendingUp
+            title: 'Economic Growth',
+            desc: 'Investing in agriculture and stimulating local economic activity to contribute to Nigeria\'s macro-growth.',
+            icon: TrendingUp,
+            stat: 'TOP',
+            suffix: 'CONTRIBUTOR'
         }
     ];
 
+    const principles = [
+        'Community Engagement & Needs Assessment',
+        'Women & Youth Empowerment Initiatives',
+        'Scholarships & Educational Promotion',
+        'Healthcare Support & healthy living',
+        'Direct Local Economic Opportunities'
+    ];
+
     return (
-        <section className="py-32 bg-white overflow-hidden">
-            <div className="container mx-auto px-6">
-                <div className="flex flex-col lg:flex-row-reverse items-center gap-24">
-                    <div className="lg:w-1/2 relative">
-                        <motion.div
-                            initial={{ opacity: 0, scale: 0.9, rotate: 2 }}
-                            whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
-                            transition={{ duration: 1 }}
-                            viewport={{ once: true }}
-                            className="relative z-10"
-                        >
-                            <img
-                                src={communityImg}
-                                alt="Community Engagement at Almadinah"
-                                className="rounded-[4rem] shadow-[0_40px_100px_rgba(0,0,0,0.1)] w-full aspect-square object-cover"
-                            />
-                            {/* Visual Accents */}
-                            <div className="absolute -top-10 -right-10 w-40 h-40 bg-brand-gold/10 rounded-full blur-[80px]" />
-                            <div className="absolute -bottom-10 -left-10 w-40 h-40 bg-brand-green/10 rounded-full blur-[80px]" />
-                        </motion.div>
+        <section id="impact" className="py-32 bg-gray-50 relative overflow-hidden">
+            <div className="container mx-auto px-6 relative z-10">
+                <div className="max-w-4xl mb-24">
+                    <motion.div
+                        initial={{ opacity: 0, x: -30 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true }}
+                    >
+                        <h2 className="text-[10px] font-black text-brand-gold uppercase tracking-[0.5em] mb-8">Social Responsibility</h2>
+                        <h3 className="text-5xl md:text-7xl font-black mb-12 leading-[0.9] tracking-tighter text-gray-900 uppercase">
+                            EMPOWERING <br />
+                            <span className="text-brand-green italic">LIVES</span>
+                        </h3>
+                        <p className="text-xl text-gray-600 font-medium leading-relaxed max-w-2xl">
+                            At Almadinah Farms, we believe that our business success is intrinsically linked to the well-being of the communities we operate in.
+                        </p>
+                    </motion.div>
+                </div>
 
-                        {/* Floating Stats Card */}
-                        <motion.div
-                            initial={{ opacity: 0, x: 50 }}
-                            whileInView={{ opacity: 1, x: 0 }}
-                            transition={{ delay: 0.8, duration: 0.8 }}
-                            className="absolute -bottom-12 -right-6 lg:-right-12 bg-white p-8 rounded-[2.5rem] shadow-2xl z-20 hidden md:block border border-gray-100"
-                        >
-                            <div className="flex items-center gap-6 mb-6 pb-6 border-b border-gray-100">
-                                <div className="bg-brand-green/10 p-4 rounded-2xl text-brand-green">
-                                    <Users size={32} />
-                                </div>
-                                <div>
-                                    <p className="text-3xl font-black text-gray-900 leading-none">200+</p>
-                                    <p className="text-xs font-bold text-gray-400 uppercase tracking-widest mt-1">Local Jobs Created</p>
-                                </div>
-                            </div>
-                            <div className="flex -space-x-3">
-                                {[1, 2, 3, 4, 5].map(i => (
-                                    <div key={i} className="w-10 h-10 rounded-full border-2 border-white bg-gray-200 overflow-hidden">
-                                        <div className="w-full h-full bg-gradient-to-br from-brand-green to-brand-gold opacity-50" />
+                <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 mb-32">
+                    {highlights.map((item, idx) => {
+                        const Icon = item.icon;
+                        return (
+                            <motion.div
+                                key={idx}
+                                initial={{ opacity: 0, y: 30 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                transition={{ delay: idx * 0.1 }}
+                                viewport={{ once: true }}
+                                className="bg-white p-12 rounded-[4rem] shadow-2xl shadow-gray-200/50 border border-gray-100 group hover:border-brand-green/30 transition-all duration-700"
+                            >
+                                <div className="flex justify-between items-start mb-12">
+                                    <div className="w-16 h-16 bg-brand-green/10 rounded-2xl flex items-center justify-center text-brand-green group-hover:bg-brand-green group-hover:text-white transition-all duration-500">
+                                        <Icon size={28} />
                                     </div>
+                                    <div className="text-right">
+                                        <p className="text-3xl font-black text-gray-900">{item.stat}</p>
+                                        <p className="text-[10px] font-black text-brand-gold uppercase tracking-widest">{item.suffix}</p>
+                                    </div>
+                                </div>
+                                <h4 className="text-2xl font-black mb-6 uppercase tracking-tight text-gray-900">{item.title}</h4>
+                                <p className="text-gray-500 font-medium leading-relaxed text-sm">
+                                    {item.desc}
+                                </p>
+                            </motion.div>
+                        );
+                    })}
+                </div>
+
+                <div className="bg-gray-950 rounded-[5rem] p-12 lg:p-24 relative overflow-hidden border border-white/5">
+                    <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-brand-green/10 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/2" />
+                    <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+                        <div>
+                            <h4 className="text-[10px] font-black text-brand-gold uppercase tracking-[0.5em] mb-8">System 01 Core Principles</h4>
+                            <h3 className="text-4xl md:text-6xl font-black text-white mb-10 tracking-tighter uppercase leading-[0.9]">
+                                OUR CSR <br />
+                                <span className="text-brand-green">PHILOSOPHY</span>
+                            </h3>
+                            <ul className="space-y-6">
+                                {principles.map((p, idx) => (
+                                    <li key={idx} className="flex items-center gap-6 group">
+                                        <div className="w-2 h-2 bg-brand-green rounded-full shadow-[0_0_10px_#008459] group-hover:scale-125 transition-transform" />
+                                        <span className="text-white/40 group-hover:text-white transition-colors font-black text-[10px] uppercase tracking-widest leading-none">
+                                            {p}
+                                        </span>
+                                    </li>
                                 ))}
-                                <div className="w-10 h-10 rounded-full border-2 border-white bg-brand-green text-white flex items-center justify-center text-[10px] font-bold">+195</div>
-                            </div>
-                        </motion.div>
-                    </div>
-
-                    <div className="lg:w-1/2">
-                        <motion.div
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.8 }}
-                            viewport={{ once: true }}
-                        >
-                            <div className="flex items-center gap-3 mb-6">
-                                <div className="h-0.5 w-10 bg-brand-gold rounded-full" />
-                                <span className="text-brand-green font-black tracking-[0.3em] uppercase text-xs">Empowering the Future</span>
-                            </div>
-                            <h2 className="text-5xl md:text-7xl font-bold text-gray-900 mb-10 leading-[0.9] tracking-tighter">
-                                Growing <br />
-                                <span className="text-brand-green underline decoration-brand-gold/30 decoration-8 underline-offset-8">Together</span>
-                            </h2>
-                            <p className="text-gray-500 text-xl mb-16 leading-relaxed font-medium">
-                                We believe that our business success is inextricably linked to the prosperity of the communities we serve. Our impact goes beyond the harvest.
+                            </ul>
+                        </div>
+                        <div className="bg-white/5 backdrop-blur-3xl p-12 rounded-[4rem] border border-white/10 relative overflow-hidden">
+                            <Activity className="text-brand-gold mb-8 opacity-50" size={32} />
+                            <h4 className="text-white text-2xl font-black mb-6 uppercase tracking-tight">Community Integration</h4>
+                            <p className="text-white/40 font-medium leading-relaxed mb-8">
+                                Regular engagement with community leaders and stakeholders to address concerns fairly and support long-term development.
                             </p>
-
-                            <div className="grid grid-cols-1 gap-10">
-                                {points.map((point, index) => {
-                                    const Icon = point.icon;
-                                    return (
-                                        <motion.div
-                                            key={index}
-                                            initial={{ opacity: 0, x: -30 }}
-                                            whileInView={{ opacity: 1, x: 0 }}
-                                            transition={{ delay: index * 0.2, duration: 0.6 }}
-                                            viewport={{ once: true }}
-                                            className="group flex gap-8 p-6 rounded-[2.5rem] hover:bg-gray-50 transition-all duration-500 border border-transparent hover:border-gray-100"
-                                        >
-                                            <div className="bg-white shadow-xl shadow-gray-200/50 w-16 h-16 rounded-2xl flex items-center justify-center text-brand-green group-hover:bg-brand-green group-hover:text-white transition-all duration-500 shrink-0">
-                                                <Icon size={28} strokeWidth={1.5} />
-                                            </div>
-                                            <div>
-                                                <h4 className="font-bold text-gray-900 text-xl mb-2 group-hover:text-brand-green transition-colors">{point.title}</h4>
-                                                <p className="text-gray-500 font-medium leading-relaxed group-hover:text-gray-700 transition-colors uppercase text-xs tracking-wider">
-                                                    {point.description}
-                                                </p>
-                                            </div>
-                                        </motion.div>
-                                    );
-                                })}
+                            <div className="flex gap-4">
+                                <span className="px-4 py-2 bg-white/5 rounded-xl text-[10px] font-black text-brand-green uppercase tracking-widest">Local Hiring First</span>
+                                <span className="px-4 py-2 bg-white/5 rounded-xl text-[10px] font-black text-brand-green uppercase tracking-widest">Active Dialogue</span>
                             </div>
-                        </motion.div>
+                        </div>
                     </div>
                 </div>
             </div>

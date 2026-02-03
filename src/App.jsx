@@ -1,28 +1,26 @@
 import React from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
+import Partners from './components/Partners';
 import About from './components/About';
 import Facilities from './components/Facilities';
-import MissionVision from './components/MissionVision';
-import Impact from './components/Impact';
-import Partners from './components/Partners';
 import Sustainability from './components/Sustainability';
+import Impact from './components/Impact';
 import Gallery from './components/Gallery';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 
 function App() {
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-white selection:bg-brand-green selection:text-white">
       <Navbar />
       <main>
         <Hero />
+        <Partners />
         <About />
         <Facilities />
-        <MissionVision />
-        <Impact />
-        <Partners />
         <Sustainability />
+        <Impact />
         <Gallery />
         <Contact />
       </main>

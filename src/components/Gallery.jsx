@@ -1,107 +1,106 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import trucksImg from '../assets/images/trucks.png';
-import communityImg from '../assets/images/community.png';
-import hydroponicsImg from '../assets/images/hydroponics.png';
-import meetingImg from '../assets/images/meeting.png';
-import fieldImg from '../assets/images/field.png';
+import { Eye, ChevronRight } from 'lucide-react';
+
+// Assets
+import f1 from '../assets/images/f1.png';
+import f2 from '../assets/images/f2.png';
+import f3 from '../assets/images/f3.png';
+import f4 from '../assets/images/f4.png';
+import f5 from '../assets/images/f5.png';
+import partner1 from '../assets/images/1.png';
+import partner2 from '../assets/images/2.png';
+import partner3 from '../assets/images/3.png';
+import partner4 from '../assets/images/4.png';
+import chicken from '../assets/images/chicken.png';
+import egg from '../assets/images/egg.png';
+import cow1 from '../assets/images/cow1.png';
+import cow2 from '../assets/images/cow2.png';
+
+const TourSegment = ({ title, images, delay }) => (
+    <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ delay, duration: 0.8 }}
+        viewport={{ once: true }}
+        className="group"
+    >
+        <div className="flex justify-between items-end mb-8">
+            <h4 className="text-2xl font-black uppercase tracking-tighter text-gray-900">{title}</h4>
+            <div className="h-[1px] flex-grow mx-8 bg-gray-100 group-hover:bg-brand-green/30 transition-colors" />
+            <span className="text-[10px] font-black tracking-widest text-brand-gold uppercase">SEGMENT.0{delay * 10}</span>
+        </div>
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+            {images.map((img, idx) => (
+                <div key={idx} className="aspect-square bg-white rounded-[2rem] overflow-hidden border border-gray-100 hover:border-brand-green/30 transition-all group/img flex items-center justify-center p-4">
+                    <img
+                        src={img}
+                        alt={`${title} ${idx}`}
+                        className="w-full h-full object-contain group-hover/img:scale-110 transition-transform duration-700"
+                    />
+                </div>
+            ))}
+        </div>
+    </motion.div>
+);
 
 const Gallery = () => {
-    const galleryItems = [
-        {
-            src: fieldImg,
-            title: 'Modern Field Operations',
-            category: 'Agriculture',
-            span: 'md:col-span-2 md:row-span-2'
-        },
-        {
-            src: hydroponicsImg,
-            title: 'Hydroponics Innovation',
-            category: 'Innovation',
-            span: 'md:col-span-1 md:row-span-1'
-        },
-        {
-            src: trucksImg,
-            title: 'Efficient Logistics',
-            category: 'Distribution',
-            span: 'md:col-span-1 md:row-span-1'
-        },
-        {
-            src: meetingImg,
-            title: 'Strategic Governance',
-            category: 'Management',
-            span: 'md:col-span-1 md:row-span-1'
-        },
-        {
-            src: communityImg,
-            title: 'Community Empowerment',
-            category: 'CSR',
-            span: 'md:col-span-2 md:row-span-1'
-        },
-    ];
-
     return (
-        <section id="gallery" className="py-32 bg-white overflow-hidden">
+        <section id="gallery" className="py-32 bg-white relative overflow-hidden">
             <div className="container mx-auto px-6">
-                <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
-                    <div className="max-w-2xl">
-                        <motion.span
-                            initial={{ opacity: 0, x: -20 }}
-                            whileInView={{ opacity: 1, x: 0 }}
-                            viewport={{ once: true }}
-                            className="text-brand-green font-black tracking-widest uppercase text-xs mb-4 block"
-                        >
-                            Visual Journey
-                        </motion.span>
-                        <motion.h2
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            className="text-4xl md:text-6xl font-bold text-gray-900 leading-tight"
-                        >
-                            Inside <span className="text-brand-green">Al-madinah</span><br />
-                            Modern Facilities
-                        </motion.h2>
-                    </div>
-                    <motion.p
-                        initial={{ opacity: 0 }}
-                        whileInView={{ opacity: 1 }}
-                        className="text-gray-500 max-w-sm text-lg pb-2 border-b-2 border-brand-gold font-medium"
+                <div className="max-w-4xl mb-32">
+                    <motion.div
+                        initial={{ opacity: 0, x: -30 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true }}
                     >
-                        Witness the integration of technology and tradition in our daily operations.
-                    </motion.p>
+                        <h2 className="text-[10px] font-black text-brand-gold uppercase tracking-[0.5em] mb-8">Visual Architecture</h2>
+                        <h3 className="text-5xl md:text-7xl font-black mb-12 leading-[0.9] tracking-tighter text-gray-900 uppercase">
+                            PICTORIAL <br />
+                            <span className="text-gray-200">TOUR</span>
+                        </h3>
+                        <p className="text-xl text-gray-600 font-medium leading-relaxed max-w-2xl">
+                            Witness the integration of technology, scale, and international standards across our diverse agricultural portfolio.
+                        </p>
+                    </motion.div>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-[300px]">
-                    {galleryItems.map((item, index) => (
-                        <motion.div
-                            key={index}
-                            initial={{ opacity: 0, scale: 0.9 }}
-                            whileInView={{ opacity: 1, scale: 1 }}
-                            transition={{ delay: index * 0.1, duration: 0.6 }}
-                            viewport={{ once: true }}
-                            className={`relative group overflow-hidden rounded-[3rem] shadow-2xl ${item.span}`}
-                        >
-                            <img
-                                src={item.src}
-                                alt={item.title}
-                                className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
-                            />
-                            <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/40 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500 flex flex-col justify-end p-10">
-                                <motion.div
-                                    initial={{ y: 20, opacity: 0 }}
-                                    whileInView={{ y: 0, opacity: 1 }}
-                                    className="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500"
-                                >
-                                    <span className="bg-brand-gold text-gray-900 px-4 py-1 rounded-full text-[10px] font-black uppercase tracking-widest mb-4 inline-block">
-                                        {item.category}
-                                    </span>
-                                    <h4 className="text-white text-3xl font-bold leading-none">{item.title}</h4>
-                                </motion.div>
-                            </div>
-                        </motion.div>
-                    ))}
+                <div className="space-y-32">
+                    <TourSegment
+                        title="Poultry & Delivery Services"
+                        images={[egg, chicken, f4, f2]}
+                        delay={0.1}
+                    />
+                    <TourSegment
+                        title="Cattle Ranch & Livestock"
+                        images={[cow1, cow2, '../assets/images/goats.png', cow1]}
+                        delay={0.2}
+                    />
+                    <TourSegment
+                        title="Infrastructure & Facilities"
+                        images={[f1, f2, f3, f5]}
+                        delay={0.3}
+                    />
+                    <TourSegment
+                        title="Global Alliance Branding"
+                        images={[partner1, partner2, partner3, partner4]}
+                        delay={0.4}
+                    />
                 </div>
+
+                <motion.div
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    className="mt-40 text-center"
+                >
+                    <a href="#contact" className="inline-flex items-center gap-6 group">
+                        <span className="text-4xl md:text-6xl font-black tracking-tighter text-gray-300 group-hover:text-brand-green transition-colors uppercase">Schedule Field Visit</span>
+                        <div className="w-20 h-20 rounded-full bg-brand-green text-white flex items-center justify-center group-hover:scale-110 group-hover:bg-brand-gold group-hover:text-black transition-all">
+                            <ChevronRight size={40} />
+                        </div>
+                    </a>
+                </motion.div>
             </div>
         </section>
     );

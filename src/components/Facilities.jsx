@@ -1,113 +1,101 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Dumbbell, Warehouse, Utensils, Factory, Droplets, FlaskConical, Globe, Award, Leaf } from 'lucide-react';
+import { Dumbbell, Warehouse, Utensils, Factory, Droplets, FlaskConical } from 'lucide-react';
+
+// Assets
+import f1 from '../assets/images/f1.png';
+import f2 from '../assets/images/f2.png';
+import f3 from '../assets/images/f3.png';
+import f4 from '../assets/images/f4.png';
+import f5 from '../assets/images/f5.png';
+
+const facilityList = [
+    { title: 'Employee Wellness Gym', icon: Dumbbell, img: f1, desc: 'A fully-equipped gym for employee wellness and health maintenance.' },
+    { title: 'Smart Storage Warehouse', icon: Warehouse, img: f2, desc: 'Spacious warehouse for precision storage and automated processing.' },
+    { title: 'Farm-to-Table Restaurant', icon: Utensils, img: f3, desc: 'A spacious restaurant serving fresh, organic farm-to-table produce.' },
+    { title: 'Advanced Grain Mills', icon: Factory, img: f4, desc: 'State-of-the-art mills for high-efficiency grain processing.' },
+    { title: 'Irrigation & Lab', icon: Droplets, img: f5, desc: 'Advanced irrigation systems and R&D center for continuous innovation.' },
+];
 
 const Facilities = () => {
-    const facilities = [
-        { name: 'Employee Wellness Gym', icon: Dumbbell, desc: 'Fully-equipped gym for staff health and fitness.' },
-        { name: 'Spacious Warehouse', icon: Warehouse, desc: 'Advanced storage and processing facilities.' },
-        { name: 'Farm-to-Table Restaurant', icon: Utensils, desc: 'Serving fresh produce directly from our fields.' },
-        { name: 'Grain Processing Mills', icon: Factory, desc: 'State-of-the-art mills for high-quality processing.' },
-        { name: 'Advanced Irrigation', icon: Droplets, desc: 'Efficient water management for year-round farming.' },
-        { name: 'R&D Center', icon: FlaskConical, desc: 'A hub for innovation and agricultural experimentation.' },
-    ];
-
-    const container = {
-        hidden: { opacity: 0 },
-        show: {
-            opacity: 1,
-            transition: {
-                staggerChildren: 0.1
-            }
-        }
-    };
-
-    const item = {
-        hidden: { opacity: 0, y: 30 },
-        show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } }
-    };
-
     return (
-        <section className="py-32 bg-brand-green relative overflow-hidden">
-            {/* Decorative Background Elements */}
-            <div className="absolute top-0 right-0 w-1/2 h-full bg-black/5 -skew-x-12 translate-x-1/2" />
-            <div className="absolute -bottom-24 -left-24 w-96 h-96 bg-brand-gold/10 rounded-full blur-[120px]" />
+        <section id="facilities" className="py-32 bg-gray-950 text-white relative overflow-hidden">
+            {/* HUD Scanlines */}
+            <div className="absolute inset-0 opacity-10 pointer-events-none"
+                style={{ backgroundImage: 'linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06))', backgroundSize: '100% 4px, 3px 100%' }} />
 
             <div className="container mx-auto px-6 relative z-10">
-                <div className="flex flex-col md:flex-row justify-between items-end mb-20 gap-8">
-                    <div className="max-w-2xl">
-                        <motion.span
-                            initial={{ opacity: 0, x: -20 }}
-                            whileInView={{ opacity: 1, x: 0 }}
-                            viewport={{ once: true }}
-                            className="text-brand-gold font-black tracking-[0.3em] uppercase text-xs mb-4 block"
-                        >
-                            World-Class Infrastructure
-                        </motion.span>
-                        <motion.h2
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            className="text-4xl md:text-6xl font-bold text-white leading-tight"
-                        >
-                            Excellence in every <br />
-                            <span className="text-brand-gold">Facility</span>
-                        </motion.h2>
-                    </div>
-                    <motion.p
-                        initial={{ opacity: 0 }}
-                        whileInView={{ opacity: 1 }}
-                        className="text-white/60 max-w-sm text-lg pb-2 border-b border-white/20 font-medium"
+                <div className="max-w-4xl mb-24">
+                    <motion.div
+                        initial={{ opacity: 0, x: -30 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true }}
                     >
-                        Investing in technology and our people to drive the future of agriculture.
-                    </motion.p>
+                        <h2 className="text-[10px] font-black text-brand-gold uppercase tracking-[0.5em] mb-8">Engineering Infrastructure</h2>
+                        <h3 className="text-5xl md:text-7xl font-black mb-12 leading-[0.9] tracking-tighter">
+                            MODERN <br />
+                            <span className="text-brand-green italic">FACILITIES</span>
+                        </h3>
+                        <p className="text-xl text-white/40 font-medium leading-relaxed max-w-2xl">
+                            Our farm boasts a range of state-of-the-art facilities designed to drive efficiency and productivity while ensuring workplace excellence.
+                        </p>
+                    </motion.div>
                 </div>
 
-                <motion.div
-                    variants={container}
-                    initial="hidden"
-                    whileInView="show"
-                    viewport={{ once: true }}
-                    className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
-                >
-                    {facilities.map((f, index) => {
-                        const Icon = f.icon;
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    {facilityList.map((item, idx) => {
+                        const Icon = item.icon;
                         return (
                             <motion.div
-                                key={index}
-                                variants={item}
-                                className="bg-white/5 backdrop-blur-xl border border-white/10 p-10 rounded-[3.5rem] hover:bg-white/10 transition-all group cursor-default shadow-xl"
+                                key={idx}
+                                initial={{ opacity: 0, y: 30 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                transition={{ delay: idx * 0.1, duration: 0.8 }}
+                                viewport={{ once: true }}
+                                className="group relative bg-white/5 border border-white/10 rounded-[3rem] overflow-hidden hover:border-brand-green/50 transition-all duration-700"
                             >
-                                <div className="w-16 h-16 bg-brand-gold/20 rounded-2xl flex items-center justify-center text-brand-gold mb-8 group-hover:bg-brand-gold group-hover:text-gray-900 transition-all duration-500 transform group-hover:rotate-6">
-                                    <Icon size={32} strokeWidth={1.5} />
+                                <div className="aspect-video relative overflow-hidden">
+                                    <img
+                                        src={item.img}
+                                        alt={item.title}
+                                        className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110 opacity-60 group-hover:opacity-100"
+                                    />
+                                    <div className="absolute inset-0 bg-gradient-to-t from-gray-950 via-gray-950/20 to-transparent" />
                                 </div>
-                                <h4 className="text-2xl font-bold text-white mb-4 group-hover:text-brand-gold transition-colors">{f.name}</h4>
-                                <p className="text-white/50 leading-relaxed text-sm group-hover:text-white/70 transition-colors">{f.desc}</p>
+                                <div className="p-10 relative">
+                                    <div className="w-14 h-14 bg-brand-green/20 rounded-2xl flex items-center justify-center text-brand-green mb-8 group-hover:bg-brand-green group-hover:text-white transition-all duration-500">
+                                        <Icon size={24} />
+                                    </div>
+                                    <h4 className="text-2xl font-black mb-4 uppercase tracking-tight">{item.title}</h4>
+                                    <p className="text-white/40 font-medium leading-relaxed text-sm">
+                                        {item.desc}
+                                    </p>
+                                </div>
+                                {/* Tech Corner Accent */}
+                                <div className="absolute top-0 right-0 p-4 opacity-0 group-hover:opacity-100 transition-opacity">
+                                    <div className="w-12 h-12 border-t-2 border-r-2 border-brand-green/50 rounded-tr-3xl" />
+                                </div>
                             </motion.div>
                         );
                     })}
-                </motion.div>
 
-                <motion.div
-                    initial={{ opacity: 0, scale: 0.95 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    transition={{ delay: 0.5 }}
-                    viewport={{ once: true }}
-                    className="mt-24 p-12 bg-white/5 border border-white/10 rounded-[4rem] text-center relative overflow-hidden"
-                >
-                    <div className="relative z-10">
-                        <p className="text-white/90 italic text-2xl max-w-4xl mx-auto leading-relaxed font-medium">
-                            "Our collaborations with leading international organizations allow us to leverage cutting-edge technology and research to set the standard for sustainable agriculture."
-                        </p>
-                        <div className="mt-8 flex justify-center gap-6 opacity-30 grayscale hover:grayscale-0 transition-all">
-                            {/* Mock partner logos or icon representation */}
-                            <Globe size={40} className="text-white" />
-                            <Award size={40} className="text-white" />
-                            <Leaf size={40} className="text-white" />
+                    {/* Innovation Node Card */}
+                    <motion.div
+                        initial={{ opacity: 0, scale: 0.9 }}
+                        whileInView={{ opacity: 1, scale: 1 }}
+                        viewport={{ once: true }}
+                        className="bg-brand-green/10 rounded-[3rem] border-2 border-dashed border-brand-green/30 p-12 flex flex-col justify-center items-center text-center group"
+                    >
+                        <div className="w-20 h-20 bg-brand-green rounded-full flex items-center justify-center text-white mb-8 group-hover:scale-110 transition-transform shadow-2xl shadow-brand-green/20">
+                            <FlaskConical size={32} />
                         </div>
-                    </div>
-                    <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-brand-gold/5 to-transparent pointer-events-none" />
-                </motion.div>
+                        <h4 className="text-3xl font-black mb-6">GLOBAL R&D CENTER</h4>
+                        <p className="text-brand-green/60 font-black text-[10px] uppercase tracking-widest leading-loose">
+                            Innovation & Experimentation Node <br />
+                            System 01 Active
+                        </p>
+                    </motion.div>
+                </div>
             </div>
         </section>
     );
