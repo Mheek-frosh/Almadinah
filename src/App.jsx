@@ -5,6 +5,7 @@ import About from './components/About';
 import Facilities from './components/Facilities';
 import MissionVision from './components/MissionVision';
 import Impact from './components/Impact';
+import Partners from './components/Partners';
 import Sustainability from './components/Sustainability';
 import Gallery from './components/Gallery';
 import Contact from './components/Contact';
@@ -20,6 +21,7 @@ function App() {
         <Facilities />
         <MissionVision />
         <Impact />
+        <Partners />
         <Sustainability />
         <Gallery />
         <Contact />

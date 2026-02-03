@@ -4,12 +4,6 @@ import { Users, TrendingUp, Handshake, Bookmark, Sparkles, Goal } from 'lucide-r
 import communityImg from '../assets/images/community.png';
 
 const Impact = () => {
-    const stats = [
-        { label: 'Active Employees', value: '200+', icon: Users },
-        { label: 'Growth Rating', value: '98%', icon: TrendingUp },
-        { label: 'Community Partners', value: '50+', icon: Handshake },
-    ];
-
     const points = [
         {
             title: 'Youth Empowerment',

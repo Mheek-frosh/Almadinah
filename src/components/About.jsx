@@ -1,8 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Egg, Beef, Sprout, ShieldCheck, Zap, Heart } from 'lucide-react';
-import hydroponicsImg from '../assets/images/hydroponics.png';
-import trucksImg from '../assets/images/trucks.png';
 
 const FocusCard = ({ icon: Icon, title, description, delay }) => (
     <motion.div

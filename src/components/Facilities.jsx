@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Dumbbell, Warehouse, Utensils, Factory, Droplets, FlaskConical } from 'lucide-react';
+import { Dumbbell, Warehouse, Utensils, Factory, Droplets, FlaskConical, Globe, Award, Leaf } from 'lucide-react';
 
 const Facilities = () => {
     const facilities = [
