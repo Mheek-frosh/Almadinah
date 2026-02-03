@@ -9,10 +9,11 @@ import Impact from './components/Impact';
 import Gallery from './components/Gallery';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
+import ChatBot from './components/ChatBot';
 
 function App() {
   return (
-    <div className="min-h-screen bg-white selection:bg-brand-green selection:text-white">
+    <div className="min-h-screen bg-white selection:bg-brand-green selection:text-white relative">
       <Navbar />
       <main>
         <Hero />
@@ -25,6 +26,7 @@ function App() {
         <Contact />
       </main>
       <Footer />
+      <ChatBot />
     </div>
   );
 }

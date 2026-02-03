@@ -42,8 +42,7 @@ const Navbar = () => {
                     <img
                         src={logo}
                         alt="Almadinah Farms Logo"
-                        className="h-12 md:h-16 w-auto object-contain brightness-0 invert transition-all group-hover:brightness-100 group-hover:invert-0"
-                        style={{ filter: isScrolled ? 'none' : 'brightness(0) invert(1)' }}
+                        className="h-12 md:h-16 w-auto object-contain transition-all"
                     />
                 </a>
 

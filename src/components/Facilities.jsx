@@ -3,18 +3,18 @@ import { motion } from 'framer-motion';
 import { Dumbbell, Warehouse, Utensils, Factory, Droplets, FlaskConical } from 'lucide-react';
 
 // Assets
-import f1 from '../assets/images/f1.png';
-import f2 from '../assets/images/f2.png';
-import f3 from '../assets/images/f3.png';
-import f4 from '../assets/images/f4.png';
-import f5 from '../assets/images/f5.png';
+// Assets
+import f1 from '../assets/images/f1.png'; // Keeping for reference if needed, but f3 is used for wellness now
+import f3 from '../assets/images/f3.png'; // Now Employee Wellness
+import trucks from '../assets/images/trucks.png';
 
 const facilityList = [
-    { title: 'Employee Wellness Gym', icon: Dumbbell, img: f1, desc: 'A fully-equipped gym for employee wellness and health maintenance.' },
-    { title: 'Smart Storage Warehouse', icon: Warehouse, img: f2, desc: 'Spacious warehouse for precision storage and automated processing.' },
-    { title: 'Farm-to-Table Restaurant', icon: Utensils, img: f3, desc: 'A spacious restaurant serving fresh, organic farm-to-table produce.' },
-    { title: 'Advanced Grain Mills', icon: Factory, img: f4, desc: 'State-of-the-art mills for high-efficiency grain processing.' },
-    { title: 'Irrigation & Lab', icon: Droplets, img: f5, desc: 'Advanced irrigation systems and R&D center for continuous innovation.' },
+    { title: 'Logistics & Transport', icon: Warehouse, img: trucks, desc: 'Efficient fleet management ensuring timely distribution across the region.' },
+    { title: 'Smart Storage Warehouse', icon: Warehouse, img: 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=2070&auto=format&fit=crop', desc: 'Spacious warehouse for precision storage and automated processing.' },
+    { title: 'Employee Wellness Gym', icon: Dumbbell, img: f3, desc: 'A fully-equipped gym for employee wellness and health maintenance.' },
+    { title: 'Farm-to-Table Restaurant', icon: Utensils, img: 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=2070&auto=format&fit=crop', desc: 'A spacious restaurant serving fresh, organic farm-to-table produce.' },
+    { title: 'Advanced Grain Mills', icon: Factory, img: 'https://images.unsplash.com/photo-1542601906990-b4d3fb7d5d0e?q=80&w=2070&auto=format&fit=crop', desc: 'State-of-the-art mills for high-efficiency grain processing.' },
+    { title: 'Irrigation & Lab', icon: Droplets, img: 'https://images.unsplash.com/photo-1563514227146-24298e20f171?q=80&w=2070&auto=format&fit=crop', desc: 'Advanced irrigation systems and R&D center for continuous innovation.' },
 ];
 
 const Facilities = () => {
