@@ -23,7 +23,7 @@ const slides = [
         desc: "Deploying state-of-the-art tractor fleets and automated machinery to drive efficiency across our integrated farm ecosystem.",
     },
     {
-        url: "https://images.unsplash.com/photo-1595844890664-d36c34b10b37?q=80&w=2070&auto=format&fit=crop",
+        url: "https://images.unsplash.com/photo-1560493676-04071c5f467b?q=80&w=2070&auto=format&fit=crop",
         tag: "Harvest",
         title: "BOUNTIFUL",
         highlight: "YIELDS",
