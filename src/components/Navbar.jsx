@@ -1,7 +1,4 @@
-import React, { useState, useEffect } from 'react';
-import { Menu, X, Leaf } from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { cn } from '../lib/utils';
+import logo from '../assets/images/image.png';
 
 const Navbar = () => {
     const [isScrolled, setIsScrolled] = useState(false);
@@ -40,15 +37,11 @@ const Navbar = () => {
                     : "bg-black/10 backdrop-blur-md border border-white/10"
             )}>
                 <a href="#home" className="flex items-center gap-3">
-                    <div className="bg-brand-green p-2 rounded-xl shadow-lg shadow-brand-green/20 group-hover:rotate-12 transition-transform duration-500">
-                        <Leaf size={24} className="text-white" />
-                    </div>
-                    <span className={cn(
-                        "font-black text-xl tracking-tighter transition-colors duration-500",
-                        isScrolled ? "text-gray-900" : "text-white"
-                    )}>
-                        AL-MADINAH <span className="text-brand-gold">FARMS</span>
-                    </span>
+                    <img
+                        src={logo}
+                        alt="Almadinah Farms Logo"
+                        className="h-10 md:h-12 w-auto object-contain transition-transform duration-500 group-hover:scale-110"
+                    />
                 </a>
 
                 {/* Desktop Menu */}

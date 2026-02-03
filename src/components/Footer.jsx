@@ -1,5 +1,6 @@
 import React from 'react';
-import { Leaf, Facebook, Twitter, Instagram, Linkedin, ArrowRight, MapPin, Mail, Phone } from 'lucide-react';
+import { Facebook, Twitter, Instagram, Linkedin, ArrowRight, MapPin, Mail, Phone } from 'lucide-react';
+import logo from '../assets/images/image.png';
 
 const Footer = () => {
     return (
@@ -11,12 +12,11 @@ const Footer = () => {
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-20 mb-24">
                     <div className="col-span-1 lg:col-span-1">
                         <div className="flex items-center gap-3 mb-10 group cursor-pointer">
-                            <div className="bg-brand-green p-2 rounded-xl group-hover:rotate-12 transition-transform duration-500 shadow-xl shadow-brand-green/20">
-                                <Leaf size={28} className="text-white" />
-                            </div>
-                            <span className="font-black text-2xl tracking-tighter">
-                                AL-MADINAH <span className="text-brand-gold">FARMS</span>
-                            </span>
+                            <img
+                                src={logo}
+                                alt="Almadinah Farms Logo"
+                                className="h-12 w-auto object-contain transition-transform duration-500 group-hover:scale-110"
+                            />
                         </div>
                         <p className="text-white/50 leading-relaxed mb-10 text-lg font-medium">
                             Revolutionizing Nigerian agriculture through state-of-the-art innovation and a deep-rooted commitment to our community since 1997.
