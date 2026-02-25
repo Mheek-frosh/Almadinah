@@ -16,6 +16,7 @@ import chicken from '../assets/images/chicken.png';
 import egg from '../assets/images/egg.png';
 import cow1 from '../assets/images/cow1.png';
 import cow2 from '../assets/images/cow2.png';
+import v01 from '../assets/images/v01.mp4';
 
 const TourSegment = ({ title, images, delay }) => (
     <motion.div
@@ -31,15 +32,29 @@ const TourSegment = ({ title, images, delay }) => (
             <span className="text-[10px] font-black tracking-widest text-brand-gold uppercase">SEGMENT.0{delay * 10}</span>
         </div>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-            {images.map((img, idx) => (
-                <div key={idx} className="aspect-square bg-white rounded-[2rem] overflow-hidden border border-gray-100 hover:border-brand-green/30 transition-all group/img flex items-center justify-center p-4">
-                    <img
-                        src={img}
-                        alt={`${title} ${idx}`}
-                        className="w-full h-full object-contain group-hover/img:scale-110 transition-transform duration-700"
-                    />
-                </div>
-            ))}
+            {images.map((item, idx) => {
+                const isVideo = typeof item === 'object' && item?.type === 'video';
+                return (
+                    <div key={idx} className="aspect-square bg-white rounded-[2rem] overflow-hidden border border-gray-100 hover:border-brand-green/30 transition-all group/img flex items-center justify-center p-4">
+                        {isVideo ? (
+                            <video
+                                src={item.src}
+                                className="block w-full h-full object-contain group-hover/img:scale-110 transition-transform duration-700"
+                                muted
+                                loop
+                                playsInline
+                                autoPlay
+                            />
+                        ) : (
+                            <img
+                                src={item}
+                                alt={`${title} ${idx}`}
+                                className="block w-full h-full object-contain group-hover/img:scale-110 transition-transform duration-700"
+                            />
+                        )}
+                    </div>
+                );
+            })}
         </div>
     </motion.div>
 );
@@ -73,7 +88,7 @@ const Gallery = () => {
                     />
                     <TourSegment
                         title="Cattle Ranch & Livestock"
-                        images={[cow1, cow2, '../assets/images/goats.png', cow1]}
+                        images={[cow1, cow2, { type: 'video', src: v01 }, cow1]}
                         delay={0.2}
                     />
                     <TourSegment
