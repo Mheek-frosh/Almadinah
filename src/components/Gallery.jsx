@@ -35,11 +35,11 @@ const TourSegment = ({ title, images, delay }) => (
             {images.map((item, idx) => {
                 const isVideo = typeof item === 'object' && item?.type === 'video';
                 return (
-                    <div key={idx} className="aspect-square bg-white rounded-[2rem] overflow-hidden border border-gray-100 hover:border-brand-green/30 transition-all group/img flex items-center justify-center p-4">
+                    <div key={idx} className="aspect-square bg-white rounded-[2rem] overflow-hidden border border-gray-100 hover:border-brand-green/30 transition-all group/img">
                         {isVideo ? (
                             <video
                                 src={item.src}
-                                className="block w-full h-full object-contain group-hover/img:scale-110 transition-transform duration-700"
+                                className="block w-full h-full object-cover group-hover/img:scale-110 transition-transform duration-700"
                                 muted
                                 loop
                                 playsInline
@@ -49,7 +49,7 @@ const TourSegment = ({ title, images, delay }) => (
                             <img
                                 src={item}
                                 alt={`${title} ${idx}`}
-                                className="block w-full h-full object-contain group-hover/img:scale-110 transition-transform duration-700"
+                                className="block w-full h-full object-cover group-hover/img:scale-110 transition-transform duration-700"
                             />
                         )}
                     </div>
