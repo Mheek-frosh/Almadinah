@@ -1,11 +1,18 @@
+/**
+ * Footer.jsx
+ * This component renders the global footer.
+ * It features the brand logo, quick links, contact details, 
+ * social media icons, and a copyright notice.
+ */
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Facebook, Twitter, Instagram, Linkedin, MapPin, Mail, Phone, ArrowUpRight } from 'lucide-react';
+import { Facebook, Twitter, Instagram, Linkedin, MapPin, Mail, Phone, ArrowUpRight } from 'lucide-net';
 import logo from '../assets/images/logo.png';
 
 const Footer = () => {
     const currentYear = new Date().getFullYear();
 
+    // Social media links data
     const socialLinks = [
         { icon: Facebook, href: '#', name: 'Facebook' },
         { icon: Instagram, href: '#', name: 'Instagram' },
@@ -13,6 +20,7 @@ const Footer = () => {
         { icon: Linkedin, href: '#', name: 'LinkedIn' },
     ];
 
+    // Array of internal section links for quick navigation
     const quickLinks = [
         { name: 'Architecture', href: '#home' },
         { name: 'Legacy', href: '#about' },
@@ -22,15 +30,15 @@ const Footer = () => {
     ];
 
     return (
-        <footer className="bg-[#003624] pt-32 pb-12 relative overflow-hidden text-white font-sans">
-            {/* Background Texture */}
+        <footer className="footer-container bg-[#003624] pt-32 pb-12 relative overflow-hidden text-white font-sans">
+            {/* Background design texture (dots) */}
             <div className="absolute inset-0 opacity-10"
                 style={{ backgroundImage: 'radial-gradient(#ffffff 1px, transparent 1px)', backgroundSize: '40px 40px' }} />
 
             <div className="container mx-auto px-6 relative z-10 flex flex-col items-center text-center">
 
-                {/* Logo & Motto */}
-                <div className="mb-20 flex flex-col items-center">
+                {/* Brand Identity: Logo and Motto */}
+                <div className="mb-20 flex flex-col items-center border-b border-white/5 pb-16">
                     <div className="bg-white p-4 rounded-3xl mb-12 shadow-2xl shadow-black/20">
                         <img src={logo} alt="Almadinah" className="h-20 w-auto object-contain" />
                     </div>
@@ -42,7 +50,7 @@ const Footer = () => {
                     </p>
                 </div>
 
-                {/* Main Links */}
+                {/* Navigation: Quick Links mapping */}
                 <div className="flex flex-wrap justify-center gap-8 mb-20">
                     {quickLinks.map((link, idx) => (
                         <a
@@ -55,7 +63,7 @@ const Footer = () => {
                     ))}
                 </div>
 
-                {/* Contact Grid */}
+                {/* Contact Information Grid */}
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-10 w-full max-w-5xl mb-24 border-t border-white/10 pt-20">
                     <div className="flex flex-col items-center gap-4">
                         <div className="w-12 h-12 bg-white/5 rounded-full flex items-center justify-center text-brand-gold">
@@ -77,7 +85,7 @@ const Footer = () => {
                     </div>
                 </div>
 
-                {/* Bottom Bar */}
+                {/* Bottom Bar: Copyright and Social links */}
                 <div className="w-full flex flex-col md:flex-row justify-between items-center gap-8 pt-8 border-t border-white/10 text-xs font-bold tracking-widest text-white/40 uppercase">
                     <p>&copy; {currentYear} Al-madinah Integrated Farms.</p>
                     <div className="flex gap-4">
@@ -97,3 +105,4 @@ const Footer = () => {
 };
 
 export default Footer;
+

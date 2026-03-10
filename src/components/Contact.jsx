@@ -1,3 +1,9 @@
+/**
+ * Contact.jsx
+ * This component renders the "Contact Us" section.
+ * It includes a contact information sidebar with icons 
+ * and a functional (simulated) inquiry form with validation styling.
+ */
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Mail, Phone, MapPin, Send, MessageCircle } from 'lucide-react';
@@ -5,12 +11,14 @@ import { Mail, Phone, MapPin, Send, MessageCircle } from 'lucide-react';
 const Contact = () => {
     return (
         <section id="contact" className="py-32 bg-gray-50 overflow-hidden relative">
-            {/* Background Decor */}
+            {/* Background radial gradient decoration */}
             <div className="absolute top-0 right-0 w-full h-full bg-[radial-gradient(circle_at_70%_30%,rgba(0,132,89,0.03),transparent)] pointer-events-none" />
 
             <div className="container mx-auto px-6">
+                {/* Main card containing both info and form */}
                 <div className="flex flex-col lg:flex-row bg-white rounded-[5rem] shadow-[0_50px_100px_rgba(0,0,0,0.05)] overflow-hidden border border-gray-100 relative">
 
+                    {/* Left Sidebar: Contact Information */}
                     <div className="lg:w-[45%] bg-gray-900 p-16 lg:p-24 text-white relative overflow-hidden flex flex-col justify-between">
                         <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-brand-green/20 to-transparent opacity-50" />
 
@@ -30,6 +38,7 @@ const Contact = () => {
                                 Have questions about our sustainable products or youth programs? Our team is ready to assist you.
                             </p>
 
+                            {/* List of contact methods (Phone, Email, Map) */}
                             <div className="space-y-10">
                                 {[
                                     { icon: Phone, label: "Direct Line", val: "+234 123 456 7890", color: "text-blue-400" },
@@ -53,6 +62,7 @@ const Contact = () => {
                             </div>
                         </div>
 
+                        {/* Bottom assurance note */}
                         <div className="mt-20 pt-12 border-t border-white/10 relative z-10">
                             <div className="flex items-center gap-3">
                                 <div className="bg-brand-green p-1.5 rounded-lg">
@@ -63,19 +73,23 @@ const Contact = () => {
                         </div>
                     </div>
 
+                    {/* Right Side: Inquiry Form */}
                     <div className="lg:w-[55%] p-16 lg:p-24 bg-white">
                         <form className="space-y-8" onSubmit={(e) => e.preventDefault()}>
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                                {/* Name Input */}
                                 <div className="space-y-3">
                                     <label className="text-[10px] font-black text-gray-400 uppercase tracking-[0.2em] ml-2">Full Name</label>
                                     <input type="text" className="w-full px-8 py-5 bg-gray-50 border border-gray-100 rounded-[2rem] focus:ring-2 focus:ring-brand-green/20 focus:border-brand-green outline-none transition-all font-semibold" placeholder="Enter name" />
                                 </div>
+                                {/* Email Input */}
                                 <div className="space-y-3">
                                     <label className="text-[10px] font-black text-gray-400 uppercase tracking-[0.2em] ml-2">Email Address</label>
                                     <input type="email" className="w-full px-8 py-5 bg-gray-50 border border-gray-100 rounded-[2rem] focus:ring-2 focus:ring-brand-green/20 focus:border-brand-green outline-none transition-all font-semibold" placeholder="john@example.com" />
                                 </div>
                             </div>
 
+                            {/* Subject Dropdown */}
                             <div className="space-y-3">
                                 <label className="text-[10px] font-black text-gray-400 uppercase tracking-[0.2em] ml-2">Subject</label>
                                 <select className="w-full px-8 py-5 bg-gray-50 border border-gray-100 rounded-[2rem] focus:ring-2 focus:ring-brand-green/20 focus:border-brand-green outline-none transition-all font-semibold appearance-none">
@@ -86,11 +100,13 @@ const Contact = () => {
                                 </select>
                             </div>
 
+                            {/* Message Textarea */}
                             <div className="space-y-3">
                                 <label className="text-[10px] font-black text-gray-400 uppercase tracking-[0.2em] ml-2">Your Message</label>
                                 <textarea rows="5" className="w-full px-8 py-6 bg-gray-50 border border-gray-100 rounded-[3rem] focus:ring-2 focus:ring-brand-green/20 focus:border-brand-green outline-none transition-all resize-none font-semibold" placeholder="How can we help?"></textarea>
                             </div>
 
+                            {/* Submit Button */}
                             <button className="w-full bg-brand-green hover:bg-gray-900 text-white font-black text-xs uppercase tracking-[0.3em] py-6 rounded-[3rem] transition-all transform hover:scale-[1.02] active:scale-[0.98] shadow-2xl shadow-brand-green/30 flex items-center justify-center gap-4">
                                 Send Inquiry <Send size={20} />
                             </button>
@@ -103,3 +119,4 @@ const Contact = () => {
 };
 
 export default Contact;
+

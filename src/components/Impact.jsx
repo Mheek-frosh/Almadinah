@@ -1,8 +1,15 @@
+/**
+ * Impact.jsx
+ * This component highlights the farm's social responsibility and community impact.
+ * It features statistical highlights, a CSR philosophy section, and 
+ * core principles displayed with animated list items.
+ */
 import React from 'react';
 import { motion } from 'framer-motion';
 import { TrendingUp, Heart, GraduationCap, Activity } from 'lucide-react';
 
 const Impact = () => {
+    // Array of impact highlights with icons and stats
     const highlights = [
         {
             title: 'Youth Empowerment',
@@ -27,6 +34,7 @@ const Impact = () => {
         }
     ];
 
+    // Core principles for the CSR philosophy list
     const principles = [
         'Community Engagement & Needs Assessment',
         'Women & Youth Empowerment Initiatives',
@@ -38,6 +46,7 @@ const Impact = () => {
     return (
         <section id="impact" className="py-32 bg-gray-50 relative overflow-hidden">
             <div className="container mx-auto px-6 relative z-10">
+                {/* Section Header */}
                 <div className="max-w-4xl mb-24">
                     <motion.div
                         initial={{ opacity: 0, x: -30 }}
@@ -55,6 +64,7 @@ const Impact = () => {
                     </motion.div>
                 </div>
 
+                {/* Highlights Grid: Cards displaying key impact areas */}
                 <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 mb-32">
                     {highlights.map((item, idx) => {
                         const Icon = item.icon;
@@ -85,8 +95,11 @@ const Impact = () => {
                     })}
                 </div>
 
+                {/* Dark Callout: CSR Philosophy and Core Principles */}
                 <div className="bg-gray-950 rounded-[5rem] p-12 lg:p-24 relative overflow-hidden border border-white/5">
+                    {/* Decorative glow effect */}
                     <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-brand-green/10 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/2" />
+
                     <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
                         <div>
                             <h4 className="text-[10px] font-black text-brand-gold uppercase tracking-[0.5em] mb-8">System 01 Core Principles</h4>
@@ -94,6 +107,7 @@ const Impact = () => {
                                 OUR CSR <br />
                                 <span className="text-brand-green">PHILOSOPHY</span>
                             </h3>
+                            {/* Principle list with animated bullets */}
                             <ul className="space-y-6">
                                 {principles.map((p, idx) => (
                                     <li key={idx} className="flex items-center gap-6 group">
@@ -105,6 +119,8 @@ const Impact = () => {
                                 ))}
                             </ul>
                         </div>
+
+                        {/* Integration Card (Glassmorphism effect) */}
                         <div className="bg-white/5 backdrop-blur-3xl p-12 rounded-[4rem] border border-white/10 relative overflow-hidden">
                             <Activity className="text-brand-gold mb-8 opacity-50" size={32} />
                             <h4 className="text-white text-2xl font-black mb-6 uppercase tracking-tight">Community Integration</h4>
@@ -124,3 +140,4 @@ const Impact = () => {
 };
 
 export default Impact;
+
