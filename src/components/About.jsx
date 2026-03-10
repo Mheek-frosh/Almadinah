@@ -1,8 +1,14 @@
+/**
+ * About.jsx
+ * This component renders the "About Us" section.
+ * It uses sub-components for statistics and focus areas, 
+ * and features a grid layout with scroll-triggered animations.
+ */
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Target, Eye, ShieldCheck } from 'lucide-react';
 
-// Assets
+// Visual assets for individual focus areas
 import chicken from '../assets/images/chicken.png';
 import egg from '../assets/images/egg.png';
 import cow1 from '../assets/images/cow1.png';
@@ -10,6 +16,9 @@ import cow2 from '../assets/images/cow2.png';
 import goats from '../assets/images/goats.png';
 import hydroponics from '../assets/images/hydroponics.png';
 
+/**
+ * StatCard: A reusable component to display a numerical statistic with a label.
+ */
 const StatCard = ({ label, value, delay }) => (
     <motion.div
         initial={{ opacity: 0, y: 20 }}
@@ -23,6 +32,9 @@ const StatCard = ({ label, value, delay }) => (
     </motion.div>
 );
 
+/**
+ * FocusArea: A card component for specific agricultural sectors (e.g., Poultry, Hydroponics).
+ */
 const FocusArea = ({ image, title, desc, delay }) => (
     <motion.div
         initial={{ opacity: 0, y: 30 }}
@@ -31,6 +43,7 @@ const FocusArea = ({ image, title, desc, delay }) => (
         viewport={{ once: true }}
         className="group"
     >
+        {/* Image container with hover scaling effect */}
         <div className="relative aspect-square mb-10 bg-gray-50 rounded-[3rem] overflow-hidden border border-gray-100 group-hover:border-brand-green/30 transition-all duration-700">
             <motion.img
                 whileHover={{ scale: 1.1, rotate: 5 }}
@@ -48,10 +61,11 @@ const FocusArea = ({ image, title, desc, delay }) => (
 const About = () => {
     return (
         <section id="about" className="py-32 bg-white relative overflow-hidden">
-            {/* Background Accents */}
+            {/* Background design accents */}
             <div className="absolute top-0 right-0 w-1/3 h-full bg-gray-50 skew-x-12 translate-x-1/2 pointer-events-none" />
 
             <div className="container mx-auto px-6 relative z-10">
+                {/* Introduction Grid: Headline and Vision/Mission */}
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center mb-40">
                     <div>
                         <motion.div
@@ -69,6 +83,7 @@ const About = () => {
                                 Located in Kano State, Nigeria, Al-madinah Farms is a pioneering agricultural enterprise that embodies innovation, sustainability, and social responsibility since its founding in 1997.
                             </p>
 
+                            {/* Mission & Vision mini-cards */}
                             <div className="grid grid-cols-2 gap-12 mb-12 border-t border-gray-100 pt-12">
                                 <div className="space-y-4">
                                     <div className="flex items-center gap-4 text-brand-green">
@@ -88,6 +103,7 @@ const About = () => {
                         </motion.div>
                     </div>
 
+                    {/* Image Collage with decorative boxes */}
                     <div className="grid grid-cols-2 gap-8 relative">
                         <div className="space-y-8 pt-20">
                             <motion.img
@@ -119,19 +135,21 @@ const About = () => {
                     </div>
                 </div>
 
-                {/* Focus Areas */}
+                {/* Core Verticals / Services Section */}
                 <div id="services" className="mb-24">
                     <div className="flex justify-between items-end mb-20">
                         <div>
                             <h2 className="text-[10px] font-black text-brand-gold uppercase tracking-[0.5em] mb-4">Core Verticals</h2>
                             <h3 className="text-4xl md:text-6xl font-black tracking-tighter text-gray-900 uppercase">Our Focus Areas</h3>
                         </div>
+                        {/* Statistics Summary */}
                         <div className="hidden md:flex gap-16">
                             <StatCard label="ANNUAL CAPACITY" value="50M+" delay={0.1} />
                             <StatCard label="QUALITY NODES" value="A+" delay={0.2} />
                         </div>
                     </div>
 
+                    {/* 5-column grid for focus areas */}
                     <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-12">
                         <FocusArea
                             image={egg}
@@ -171,3 +189,4 @@ const About = () => {
 };
 
 export default About;
+

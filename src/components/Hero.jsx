@@ -1,12 +1,19 @@
+/**
+ * Hero.jsx
+ * This component renders the main hero section of the home page.
+ * it features a full-screen background carousel with animated text content
+ * and call-to-action buttons.
+ */
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronRight, ChevronLeft } from 'lucide-react';
 import { cn } from '../lib/utils';
 
-// Images
-import facilityHero from '../assets/images/tractors.jpeg'; // Tractors
+// Static assets (images)
+import facilityHero from '../assets/images/tractors.jpeg';
 import partnerMeeting from '../assets/images/partner-meeting.jpg';
 
+// Slides data covering different aspects of the organization
 const slides = [
     {
         url: partnerMeeting,
@@ -32,8 +39,10 @@ const slides = [
 ];
 
 const Hero = () => {
+    // Current slide index
     const [index, setIndex] = useState(0);
 
+    // Auto-cycling timer for the carousel (every 8 seconds)
     useEffect(() => {
         const timer = setInterval(() => {
             setIndex((prev) => (prev + 1) % slides.length);
@@ -41,12 +50,13 @@ const Hero = () => {
         return () => clearInterval(timer);
     }, []);
 
+    // Manual navigation controls
     const next = () => setIndex((prev) => (prev + 1) % slides.length);
     const prev = () => setIndex((prev) => (prev - 1 + slides.length) % slides.length);
 
     return (
         <section id="home" className="relative h-screen w-full overflow-hidden bg-black font-sans">
-            {/* Background Carousel */}
+            {/* Background Carousel using AnimatePresence for smooth transitions between images */}
             <AnimatePresence mode="wait">
                 <motion.div
                     key={index}
@@ -56,12 +66,13 @@ const Hero = () => {
                     transition={{ duration: 1.5, ease: "easeInOut" }}
                     className="absolute inset-0"
                 >
+                    {/* Dark overlay for text readability */}
                     <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/20 to-black/80 z-10" />
                     <img src={slides[index].url} alt={slides[index].title} className="w-full h-full object-cover" />
                 </motion.div>
             </AnimatePresence>
 
-            {/* Content */}
+            {/* Content Container - Centered overlay with animated text */}
             <div className="relative z-30 h-full container mx-auto px-6 flex flex-col justify-center items-center text-center">
                 <motion.div
                     key={`content-${index}`}
@@ -70,11 +81,13 @@ const Hero = () => {
                     transition={{ delay: 0.3, duration: 0.8 }}
                     className="max-w-5xl"
                 >
+                    {/* Animated Tag Badge */}
                     <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full border border-white/30 bg-white/10 backdrop-blur-md mb-8">
                         <span className="w-2 h-2 rounded-full bg-brand-green animate-pulse" />
                         <span className="text-xs font-bold text-white uppercase tracking-widest">{slides[index].tag}</span>
                     </div>
 
+                    {/* Main Headline with gradient text highlight */}
                     <h1 className="text-6xl md:text-8xl lg:text-9xl font-black text-white mb-8 tracking-tighter leading-tight">
                         {slides[index].title} <br />
                         <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-green to-brand-gold">
@@ -82,10 +95,12 @@ const Hero = () => {
                         </span>
                     </h1>
 
+                    {/* Description Paragraph */}
                     <p className="text-white/80 text-xl md:text-2xl max-w-3xl mx-auto mb-12 font-medium leading-relaxed">
                         {slides[index].desc}
                     </p>
 
+                    {/* Call to Action Buttons */}
                     <div className="flex flex-col md:flex-row gap-6 justify-center">
                         <a href="#about" className="px-10 py-5 bg-brand-green text-white rounded-full font-bold text-sm uppercase tracking-widest hover:bg-brand-gold hover:text-black transition-all shadow-[0_10px_30px_rgba(0,132,89,0.3)]">
                             Explore Operations
@@ -97,7 +112,7 @@ const Hero = () => {
                 </motion.div>
             </div>
 
-            {/* Carousel Controls */}
+            {/* Carousel Controls - Arrows and Dots */}
             <div className="absolute bottom-12 left-0 right-0 z-40 flex justify-center items-center gap-8">
                 <button onClick={prev} className="p-4 rounded-full border border-white/20 text-white/50 hover:text-white hover:bg-white/10 transition-all">
                     <ChevronLeft size={24} />
@@ -123,3 +138,4 @@ const Hero = () => {
 };
 
 export default Hero;
+

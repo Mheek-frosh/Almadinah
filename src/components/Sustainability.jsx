@@ -1,8 +1,15 @@
+/**
+ * Sustainability.jsx
+ * This component details the farm's commitment to environmental stewardship.
+ * It showcases key initiatives (Solar, Water, Zero-waste) and 
+ * alignment with United Nations Sustainable Development Goals (SDGs).
+ */
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Sun, Droplets, Recycle, Zap, Globe, Leaf, Wind } from 'lucide-react';
 
 const Sustainability = () => {
+    // List of sustainability initiatives with associated icons and styles
     const initiatives = [
         {
             title: 'Renewable Core',
@@ -24,6 +31,7 @@ const Sustainability = () => {
         }
     ];
 
+    // Array representing aligned Sustainable Development Goals
     const sdgs = [
         { id: 2, name: 'Zero Hunger' },
         { id: 8, name: 'Decent Work' },
@@ -34,9 +42,11 @@ const Sustainability = () => {
 
     return (
         <section id="sustainability" className="py-32 bg-white relative overflow-hidden font-sans">
+            {/* Background radial gradient accent */}
             <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-brand-green/5 via-transparent to-transparent" />
 
             <div className="container mx-auto px-6 relative z-10">
+                {/* Section Title and Lead Paragraph */}
                 <div className="text-center max-w-4xl mx-auto mb-24">
                     <motion.div
                         initial={{ opacity: 0, y: 30 }}
@@ -54,6 +64,7 @@ const Sustainability = () => {
                     </motion.div>
                 </div>
 
+                {/* Grid display for the three main initiatives */}
                 <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 mb-32">
                     {initiatives.map((item, idx) => (
                         <motion.div
@@ -64,6 +75,7 @@ const Sustainability = () => {
                             viewport={{ once: true }}
                             className="bg-gray-50 rounded-[3rem] p-12 border border-gray-100 hover:shadow-2xl hover:border-brand-green/20 transition-all duration-500 group"
                         >
+                            {/* Icon container with scaling transition */}
                             <div className={`w-16 h-16 bg-white rounded-2xl flex items-center justify-center ${item.color} shadow-sm mb-8 group-hover:scale-110 transition-transform`}>
                                 <item.icon size={32} />
                             </div>
@@ -75,7 +87,9 @@ const Sustainability = () => {
                     ))}
                 </div>
 
+                {/* Dark callout section for SDG Alignment */}
                 <div className="bg-gray-900 rounded-[4rem] p-12 md:p-24 relative overflow-hidden flex flex-col md:flex-row items-center justify-between gap-16">
+                    {/* Background pattern (carbon fiber) */}
                     <div className="absolute inset-0 bg-brand-green/10 opacity-20" style={{ backgroundImage: 'url("https://www.transparenttextures.com/patterns/carbon-fibre.png")' }} />
 
                     <div className="relative z-10 max-w-xl">
@@ -90,6 +104,7 @@ const Sustainability = () => {
                         </div>
                     </div>
 
+                    {/* Mapping through SDGs to display them as small badges/cards */}
                     <div className="relative z-10 grid grid-cols-2 md:grid-cols-3 gap-4">
                         {sdgs.map((sdg, idx) => (
                             <div key={idx} className="bg-white/5 backdrop-blur-md border border-white/10 p-6 rounded-2xl text-center hover:bg-white/10 transition-colors cursor-default">
@@ -105,3 +120,4 @@ const Sustainability = () => {
 };
 
 export default Sustainability;
+

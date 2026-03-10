@@ -1,13 +1,19 @@
+/**
+ * Facilities.jsx
+ * This component displays the modern infrastructure of the farm.
+ * It uses a list of facility objects to render a grid of cards,
+ * featuring Lucide icons and hover-activated detail accents.
+ */
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Dumbbell, Warehouse, Utensils, Factory, Droplets, FlaskConical } from 'lucide-react';
 
-// Assets
-// Assets
-import f1 from '../assets/images/f1.png'; // Keeping for reference if needed, but f3 is used for wellness now
-import f3 from '../assets/images/f3.png'; // Now Employee Wellness
+// Static assets for facility images
+import f1 from '../assets/images/f1.png';
+import f3 from '../assets/images/f3.png'; // Used for Employee Wellness
 import trucks from '../assets/images/trucks.png';
 
+// Data array defining each facility's details
 const facilityList = [
     { title: 'Logistics & Transport', icon: Warehouse, img: trucks, desc: 'Efficient fleet management ensuring timely distribution across the region.' },
     { title: 'Smart Storage Warehouse', icon: Warehouse, img: 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=2070&auto=format&fit=crop', desc: 'Spacious warehouse for precision storage and automated processing.' },
@@ -20,11 +26,12 @@ const facilityList = [
 const Facilities = () => {
     return (
         <section id="facilities" className="py-32 bg-gray-950 text-white relative overflow-hidden">
-            {/* HUD Scanlines */}
+            {/* Decorative HUD/Tech overlay lines */}
             <div className="absolute inset-0 opacity-10 pointer-events-none"
                 style={{ backgroundImage: 'linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06))', backgroundSize: '100% 4px, 3px 100%' }} />
 
             <div className="container mx-auto px-6 relative z-10">
+                {/* Section Header */}
                 <div className="max-w-4xl mb-24">
                     <motion.div
                         initial={{ opacity: 0, x: -30 }}
@@ -42,6 +49,7 @@ const Facilities = () => {
                     </motion.div>
                 </div>
 
+                {/* Facility Cards Grid */}
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     {facilityList.map((item, idx) => {
                         const Icon = item.icon;
@@ -54,6 +62,7 @@ const Facilities = () => {
                                 viewport={{ once: true }}
                                 className="group relative bg-white/5 border border-white/10 rounded-[3rem] overflow-hidden hover:border-brand-green/50 transition-all duration-700"
                             >
+                                {/* Image cover with hover zoom and opacity shift */}
                                 <div className="aspect-video relative overflow-hidden">
                                     <img
                                         src={item.img}
@@ -62,6 +71,7 @@ const Facilities = () => {
                                     />
                                     <div className="absolute inset-0 bg-gradient-to-t from-gray-950 via-gray-950/20 to-transparent" />
                                 </div>
+                                {/* Icon and Text content */}
                                 <div className="p-10 relative">
                                     <div className="w-14 h-14 bg-brand-green/20 rounded-2xl flex items-center justify-center text-brand-green mb-8 group-hover:bg-brand-green group-hover:text-white transition-all duration-500">
                                         <Icon size={24} />
@@ -71,7 +81,7 @@ const Facilities = () => {
                                         {item.desc}
                                     </p>
                                 </div>
-                                {/* Tech Corner Accent */}
+                                {/* Decorative "Tech Corner" that appears on hover */}
                                 <div className="absolute top-0 right-0 p-4 opacity-0 group-hover:opacity-100 transition-opacity">
                                     <div className="w-12 h-12 border-t-2 border-r-2 border-brand-green/50 rounded-tr-3xl" />
                                 </div>
@@ -79,7 +89,7 @@ const Facilities = () => {
                         );
                     })}
 
-                    {/* Innovation Node Card */}
+                    {/* Special "Innovation Node" Card */}
                     <motion.div
                         initial={{ opacity: 0, scale: 0.9 }}
                         whileInView={{ opacity: 1, scale: 1 }}
@@ -102,3 +112,4 @@ const Facilities = () => {
 };
 
 export default Facilities;
+

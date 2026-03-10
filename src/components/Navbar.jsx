@@ -1,3 +1,9 @@
+/**
+ * Navbar.jsx
+ * This component renders the global navigation bar.
+ * It includes logic for a transparent-to-solid transition on scroll,
+ * and a responsive mobile menu with animations.
+ */
 import React, { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -5,17 +11,22 @@ import { cn } from '../lib/utils';
 import logo from '../assets/images/logo.png';
 
 const Navbar = () => {
+    // State to track if the page has been scrolled beyond a threshold
     const [isScrolled, setIsScrolled] = useState(false);
+    // State to toggle the mobile menu visibility
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
+    // Effect to handle the scroll event and update isScrolled state
     useEffect(() => {
         const handleScroll = () => {
             setIsScrolled(window.scrollY > 50);
         };
         window.addEventListener('scroll', handleScroll);
+        // Cleanup event listener on component unmount
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
+    // Navigation links data
     const navLinks = [
         { name: 'Architecture', href: '#home' },
         { name: 'Legacy', href: '#about' },
@@ -31,13 +42,14 @@ const Navbar = () => {
                 isScrolled ? 'py-4' : 'py-8'
             )}
         >
+            {/* Main Navigation Container with dynamic background based on scroll status */}
             <div className={cn(
                 "max-w-7xl mx-auto px-10 py-4 rounded-[2.5rem] transition-all duration-700 flex justify-between items-center group relative",
                 isScrolled
                     ? "bg-white/90 backdrop-blur-3xl shadow-[0_20px_60px_rgba(0,0,0,0.05)] border border-brand-green/10 translate-y-2"
                     : "bg-black/10 backdrop-blur-xl border border-white/10"
             )}>
-                {/* Brand Logo */}
+                {/* Brand Logo - Navigates to home */}
                 <a href="#home" className="relative z-10 hover:scale-105 transition-transform duration-500">
                     <img
                         src={logo}
@@ -46,7 +58,7 @@ const Navbar = () => {
                     />
                 </a>
 
-                {/* Desktop Menu */}
+                {/* Desktop Menu - Visible on medium screens and up */}
                 <div className="hidden md:flex items-center gap-10">
                     {navLinks.map((link) => (
                         <a
@@ -58,12 +70,14 @@ const Navbar = () => {
                             )}
                         >
                             {link.name}
+                            {/* Hover underline effect */}
                             <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-brand-gold group-hover/link:w-full transition-all duration-500" />
                         </a>
                     ))}
 
                     <div className="w-px h-8 bg-gray-200/20 mx-4 hidden lg:block" />
 
+                    {/* CTA Button */}
                     <a
                         href="#contact"
                         className={cn(
@@ -77,7 +91,7 @@ const Navbar = () => {
                     </a>
                 </div>
 
-                {/* Mobile Toggle */}
+                {/* Mobile Toggle Button - Visible only on small screens */}
                 <button
                     className={cn(
                         "md:hidden p-3 rounded-2xl transition-all active:scale-90",
@@ -89,7 +103,7 @@ const Navbar = () => {
                 </button>
             </div>
 
-            {/* Mobile Menu Redesign */}
+            {/* Mobile Menu Overlay with Framer Motion animations */}
             <AnimatePresence>
                 {isMobileMenuOpen && (
                     <motion.div
@@ -127,5 +141,5 @@ const Navbar = () => {
     );
 };
 
-
 export default Navbar;
+

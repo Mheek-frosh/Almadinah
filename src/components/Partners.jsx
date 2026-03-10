@@ -1,7 +1,12 @@
+/**
+ * Partners.jsx
+ * This component showcases the organization's international partners.
+ * It features a grid of logos with hover effects and scroll animations.
+ */
 import React from 'react';
 import { motion } from 'framer-motion';
 
-// Assets
+// Visual assets for individual partner logos
 import partner1 from '../assets/images/1.png';
 import partner2 from '../assets/images/2.png';
 import partner3 from '../assets/images/3.png';
@@ -12,9 +17,11 @@ const partners = [partner1, partner2, partner3, partner4];
 const Partners = () => {
     return (
         <section className="py-32 bg-gray-50 overflow-hidden relative">
+            {/* Decorative background shape */}
             <div className="absolute top-0 right-0 w-1/3 h-full bg-white skew-x-12 translate-x-32" />
 
             <div className="container mx-auto px-6 relative z-10">
+                {/* Header section with heading and descriptive paragraph */}
                 <div className="flex flex-col lg:flex-row items-end justify-between mb-24 gap-12">
                     <div className="max-w-2xl">
                         <h4 className="text-[10px] font-black text-brand-gold uppercase tracking-[0.5em] mb-6">Global Network</h4>
@@ -27,6 +34,7 @@ const Partners = () => {
                     </p>
                 </div>
 
+                {/* Grid layout for partner logos with entrance animations */}
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                     {partners.map((partner, idx) => (
                         <motion.div
@@ -37,6 +45,7 @@ const Partners = () => {
                             viewport={{ once: true }}
                             className="group h-[300px] bg-white rounded-[3rem] border border-gray-100 flex items-center justify-center p-12 hover:border-brand-green/30 hover:shadow-2xl hover:-translate-y-2 transition-all duration-500"
                         >
+                            {/* Grayscale image that restores color on hover */}
                             <img
                                 src={partner}
                                 alt={`Partner ${idx + 1}`}
@@ -51,3 +60,4 @@ const Partners = () => {
 };
 
 export default Partners;
+
